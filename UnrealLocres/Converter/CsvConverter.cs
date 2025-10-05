@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Csv;
+using LocresLib;
 
 namespace UnrealLocres.Converter
 {
@@ -18,7 +19,7 @@ namespace UnrealLocres.Converter
 
         public override string ImportExtension => "csv";
 
-        protected override List<TranslationEntry> Read(TextReader reader)
+        protected override List<TranslationEntry> Read(TextReader reader, LocresFile locres)
         {
             var result = new List<TranslationEntry>();
             foreach (var line in CsvReader.Read(reader, options))

@@ -58,7 +58,7 @@ namespace UnrealLocres
             [Value(0, HelpText = "Input locres file path", MetaName = "InputPath", Required = true)]
             public string InputPath { get; set; }
 
-            [Option('f', "format", Default = "csv", HelpText = "Output format [pot, csv]")]
+            [Option('f', "format", Default = "csv", HelpText = "Output format [pot, csv, txt]")]
             public string OutputFormat { get; set; }
 
             [Option('o', HelpText = "Output path including extension")]
@@ -74,7 +74,7 @@ namespace UnrealLocres
             [Value(1, HelpText = "Input translation file path", MetaName = "TranslationInputPath", Required = true)]
             public string TranslationInputPath { get; set; }
 
-            [Option('f', "format", Default = "csv", HelpText = "Translation file input format [pot, csv]")]
+            [Option('f', "format", Default = "csv", HelpText = "Translation file input format [pot, csv, txt]")]
             public string TranslationInputFormat { get; set; }
 
             [Option('o', HelpText = "Translated locres file output path, default is [INPUT PATH].new")]
@@ -239,6 +239,7 @@ namespace UnrealLocres
 
         static int Main(string[] args)
         {
+            RegisterConverter(new TxtConverter());
             RegisterConverter(new PoConverter());
             RegisterConverter(new CsvConverter());
 

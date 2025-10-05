@@ -47,7 +47,7 @@ namespace UnrealLocres.Converter
             using (var file = File.OpenRead(inputPath))
             using (var reader = new StreamReader(file))
             {
-                data = Read(reader);
+                data = Read(reader, locres);
             }
 
             var translatedList = data.Where(x => !string.IsNullOrEmpty(x.Target)).ToList();
@@ -92,7 +92,7 @@ namespace UnrealLocres.Converter
             Console.WriteLine($"\nImported {translated - dict.Count} translations.");
         }
 
-        protected abstract List<TranslationEntry> Read(TextReader stream);
+        protected abstract List<TranslationEntry> Read(TextReader stream, LocresFile locres);
 
         protected class TranslationEntry
         {

@@ -1,4 +1,5 @@
 ﻿using Karambolo.PO;
+using LocresLib;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +13,7 @@ namespace UnrealLocres.Converter
 
         public override string ImportExtension => "po";
 
-        protected override List<TranslationEntry> Read(TextReader reader)
+        protected override List<TranslationEntry> Read(TextReader reader, LocresFile locres)
         {
             var list = new List<TranslationEntry>();
 
